@@ -46,6 +46,7 @@ jobs:
 
       - name: Deploy to Minikube
         run: |
+          eval $(minikube -p minikube docker-env)
           kubectl apply -f deployment.yaml
 
       #- name: Set up Helm
