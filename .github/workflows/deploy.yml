@@ -51,8 +51,9 @@ jobs:
 
       - name: Deploy to Minikube
         run: |
+          export SHELL=/bin/bash
           eval $(minikube -p minikube docker-env)
-          docker build -t maxmills/http_server:latest .
+          docker build -f ./Dockerfile -t maxmills/http_server:latest .
 
       #- name: Set up Helm
       #  uses: azure/setup-helm@v2
