@@ -18,35 +18,49 @@ jobs:
         with:
           ruby-version: "3.1"
 
-      - name: Build and push Docker image
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_NAME: maxmills/http_server
-        run: |
-          docker build -t $IMAGE_NAME .
-          echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-          docker push $IMAGE_NAME
-  # deploy:
-  #   runs-on: ubuntu-latest
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-  #   needs: build
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-  #   steps:
-  #     - name: Install kubectl
-  #       uses: azure/setup-kubectl@v1
-  #       with:
-  #         install-kubectl: true
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: user/app:latest
+#      - name: Build and push Docker image
+#        env:
+#          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+#          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+#          IMAGE_NAME: maxmills/http_server
+#        run: |
+#          docker build -t $IMAGE_NAME .
+#          echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+#          docker push $IMAGE_NAME
+# deploy:
+#   runs-on: ubuntu-latest
 
-  #     - name: Set up Helm
-  #       uses: azure/setup-helm@v2
+#   needs: build
 
-  #     - name: Deploy to Kubernetes
-  #       env:
-  #         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-  #       run: |
-  #         echo "$KUBE_CONFIG_DATA" | base64 --decode > kubeconfig.yml
-  #         kubectl config use-context your-cluster-name
-  #         helm upgrade --install your-release-name ./path/to/helm/chart
+#   steps:
+#     - name: Install kubectl
+#       uses: azure/setup-kubectl@v1
+#       with:
+#         install-kubectl: true
+
+#     - name: Set up Helm
+#       uses: azure/setup-helm@v2
+
+#     - name: Deploy to Kubernetes
+#       env:
+#         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+#       run: |
+#         echo "$KUBE_CONFIG_DATA" | base64 --decode > kubeconfig.yml
+#         kubectl config use-context your-cluster-name
+#         helm upgrade --install your-release-name ./path/to/helm/chart
 
 #
