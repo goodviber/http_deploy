@@ -2,7 +2,7 @@
 FROM ruby:3.1-alpine
 
 # Set the working directory in the container
-# WORKDIR /usr/src/app
+WORKDIR /usr/src/app
 
 # Copy the current directory contents into the container at /usr/src/app
 COPY . .
