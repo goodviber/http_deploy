@@ -46,6 +46,7 @@ jobs:
 
       - name: Deploy to Minikube
         run: |
+          export SHELL=/bin/bash
           eval $(minikube -p minikube docker-env)
 
       #- name: Set up Helm
