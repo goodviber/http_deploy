@@ -52,9 +52,7 @@ jobs:
       - name: Deploy to Minikube
         run: |
           eval $(minikube -p minikube docker-env)
-          pwd
-          cd ..
-          pwd
+          docker build -f Dockerfile -t maxmills/http_server:latest .
 
       #- name: Set up Helm
       #  uses: azure/setup-helm@v2
