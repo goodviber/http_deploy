@@ -32,19 +32,24 @@ jobs:
         with:
           push: true
           tags: maxmills/http_server:latest
-# deploy:
-#   runs-on: ubuntu-latest
 
-#   needs: build
+  deploy:
+    runs-on: ubuntu-latest
 
-#   steps:
-#     - name: Install kubectl
-#       uses: azure/setup-kubectl@v1
-#       with:
-#         install-kubectl: true
+    needs: build
 
-#     - name: Set up Helm
-#       uses: azure/setup-helm@v2
+    steps:
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          install-kubectl: true
+
+      - name: Deploy to Minikube
+        run: |
+          kubectl apply -f deployment.yaml
+
+      #- name: Set up Helm
+      #  uses: azure/setup-helm@v2
 
 #     - name: Deploy to Kubernetes
 #       env:
