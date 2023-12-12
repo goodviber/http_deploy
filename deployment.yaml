@@ -19,7 +19,7 @@ spec:
         - name: http_server
           image: "maxmills/http_server:latest"
           ports:
-            - containerPort: 80
+            - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
@@ -30,5 +30,5 @@ spec:
   selector:
     app: http_server
   ports:
-    - port: 80
+    - port: 8080
       targetPort: 8080
