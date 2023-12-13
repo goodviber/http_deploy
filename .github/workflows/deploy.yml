@@ -33,7 +33,7 @@ jobs:
           push: true
           tags: maxmills/http-server:latest
 
-  deploy:
+  test:
     runs-on: ubuntu-latest
 
     needs: build
@@ -73,8 +73,12 @@ jobs:
             sleep 1
           done
           kubectl get pods
-          curl --verbose $(minikube service http-server --url)
-          curl --verbose $(minikube service http-server --url)/healthcheck
+          curl $(minikube service http-server --url)/healthcheck
+          curl $(minikube service http-server --url)
+          if [ "$(curl $(minikube service http-server --url) && curl $(minikube service http-server --url)/healthcheck)" != "Hello World" ]; then
+            echo "service not working"
+            exit 1
+          fi
 
 #
 #- name: Set up Helm
