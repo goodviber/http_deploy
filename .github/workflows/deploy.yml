@@ -75,7 +75,7 @@ jobs:
           kubectl get pods
           curl $(minikube service http-server --url)/healthcheck
           curl $(minikube service http-server --url)
-          if [ "$(curl $(minikube service http-server --url)/healthcheck && curl $(minikube service http-server --url))" != "Well, hello there!OK" ]; then
+          if [ "$(curl $(minikube service http-server --url) && curl $(minikube service http-server --url)/healthcheck)" != "Well, hello there!OK" ]; then
             echo "service not working"
             exit 1
           fi
