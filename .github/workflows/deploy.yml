@@ -64,7 +64,12 @@ jobs:
         run: kubectl apply -f deployment.yaml
 
       - name: Test services
-        run: kubectl get services
+        run: |
+          kubectl get pods
+          kubectl get services
+          minikube service list
+          minkube service http-server --url
+
 #
 #- name: Set up Helm
 #  uses: azure/setup-helm@v2
