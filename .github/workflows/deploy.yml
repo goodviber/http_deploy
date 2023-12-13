@@ -73,7 +73,6 @@ jobs:
           kubectl get pods
           minikube service list
           sleep 30
-          minikube service http-server --url
           minikube status
           kubectl get events
           kubectl logs --all-containers --all-namespaces
