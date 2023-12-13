@@ -74,6 +74,7 @@ jobs:
           done
           kubectl get pods
           curl --verbose $(minikube service http-server --url)
+          curl --verbose $(minikube service http-server --url)/healthcheck
 
 #
 #- name: Set up Helm
