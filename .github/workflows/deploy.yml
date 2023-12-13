@@ -65,16 +65,11 @@ jobs:
 
       - name: Test services
         run: |
-          kubectl get pods
-          kubectl get services
           minikube service list
           until minikube service http-server --url; do
             echo "waiting for service to be ready"
             sleep 1
           done
-          kubectl get pods
-          curl $(minikube service http-server --url)/healthcheck
-          curl $(minikube service http-server --url)
           if [ "$(curl $(minikube service http-server --url))" != "Well, hello there!" ] || [ "$(curl $(minikube service http-server --url)/healthcheck)" != "OK" ]; then
             echo "Service not working as expected."
             exit 1
