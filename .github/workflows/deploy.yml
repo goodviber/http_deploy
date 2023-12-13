@@ -31,7 +31,9 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: maxmills/http-server:latest
+          tags: |
+            maxmills/http-server:latest
+            maxmills/http-server:${{ github.sha }}
 
   test:
     runs-on: ubuntu-latest
