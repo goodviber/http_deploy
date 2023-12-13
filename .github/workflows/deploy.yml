@@ -52,15 +52,19 @@ jobs:
       - name: Try the cluster !
         run: kubectl get pods -A
 
-      - name: Deploy to Minikube
+      - name: Build image
         run: |
           export SHELL=/bin/bash
           eval $(minikube -p minikube docker-env)
           docker build -f ./Dockerfile -t maxmills/http_server:latest .
+          echo -n 'verifying image built: '
+          docker images
+
+      - name: Deploy to Minikube
+        run: kubectl apply -f deployment.yaml
 
       #- name: Set up Helm
       #  uses: azure/setup-helm@v2
-
 #     - name: Deploy to Kubernetes
 #       env:
 #         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}

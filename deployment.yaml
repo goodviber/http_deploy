@@ -4,7 +4,8 @@ apiVersion: apps/v1
 metadata:
   name: http_server
   namespace: default
-  labels: app:http_server
+  labels:
+    app: http_server
 spec:
   replicas: 1
   selector:
@@ -31,4 +32,4 @@ spec:
     app: http_server
   ports:
     - port: 8080
-      targetPort: 8080
+      targetPort: 80
