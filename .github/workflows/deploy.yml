@@ -73,7 +73,7 @@ jobs:
             sleep 1
           done
           kubectl get pods
-          curl $(minikube service http-server --url)
+          curl --verbose $(minikube service http-server --url)
 
 #
 #- name: Set up Helm
