@@ -44,6 +44,7 @@ securityContext:
 service:
   type: NodePort
   port: 8080
+  targetPort: 80
   nodePort: 80
 
 ingress:
