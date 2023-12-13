@@ -72,8 +72,12 @@ jobs:
         run: |
           kubectl get pods
           minikube service list
-          sleep 10
+          sleep 30
           minikube service http-server --url
+          minikube status
+          kubectl get events
+          kubectl logs --all-containers --all-namespaces
+
 #          until minikube service http-server --url; do
 #            echo "waiting for service to be ready"
 #            sleep 1
