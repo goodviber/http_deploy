@@ -68,6 +68,7 @@ jobs:
           kubectl get pods
           kubectl get services
           minikube service list
+          minikube service http-server --url
 
 #
 #- name: Set up Helm
