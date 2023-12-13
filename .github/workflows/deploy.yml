@@ -75,7 +75,7 @@ jobs:
           sleep 30
           minikube status
           kubectl get events
-          kubectl logs --all-containers --all-namespaces
+          kubectl logs --all-containers
 
 #          until minikube service http-server --url; do
 #            echo "waiting for service to be ready"
