@@ -66,6 +66,8 @@ jobs:
       - name: Test services
         run: |
           kubectl get pods
+          kubectl get services
+          minikube service list
 
 #
 #- name: Set up Helm
