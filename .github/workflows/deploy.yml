@@ -65,8 +65,8 @@ jobs:
           docker images
 
       - name: Deploy to Minikube
-        run: helm install http-server ./helm
-        #run: kubectl apply -f deployment.yaml
+        #run: helm install http-server ./helm
+        run: kubectl apply -f deployment.yaml
 
       - name: Test services
         run: |
@@ -76,10 +76,11 @@ jobs:
           minikube status
           kubectl get events
           kubectl get pods
+          echo "KUBECTL GET SERVICES"
           kubectl get services -n default
+          echo "KUBECTL GET LOGS"
           kubectl logs -n default service/http-server
           kubectl describe service/http-server
-          minikube status
           minikube service http-server --url
         
 #          until minikube service http-server --url; do
