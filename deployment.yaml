@@ -11,8 +11,8 @@ spec:
   autoScaling:
     horizontal:
       maxReplicas: 10
-      targetCPUUtilizationPercentage: 50
-      targetMemoryUtilizationPercentage: 50
+      averageCPU: 800m
+      averageRelativeMemory: 50
   selector:
     matchLabels:
       app: http-server
