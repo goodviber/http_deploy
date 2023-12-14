@@ -23,6 +23,7 @@ spec:
             - containerPort: 8080
           readinessProbe:
             httpGet:
+              host:
               path: /healthcheck
               port: 8080
             initialDelaySeconds: 60
