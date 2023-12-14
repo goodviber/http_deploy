@@ -65,7 +65,7 @@ jobs:
           minikube status
           echo "KUBECTL GET EVENTS"
           kubectl get events
-          echo "KUBECTL GET PODS
+          echo "KUBECTL GET PODS"
           kubectl get pods -n default
           echo "KUBECTL DESCRIBE PODS"
           kubectl describe pods -n default
