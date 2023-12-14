@@ -80,9 +80,12 @@ jobs:
             sleep 1
           done
 
+          echo "MINIKUBE LOGS"
+          minikube logs
+            
           echo "DESCRIBE SERVICE"
           kubectl describe service/http-server
-          
+
           curl $(minikube service http-server --url)
           curl $(minikube service http-server --url)/healthcheck
 #          if [ "$(curl $(minikube service http-server --url))" != "Well, hello there!" ] || [ "$(curl $(minikube service http-server --url)/healthcheck)" != "OK" ]; then
