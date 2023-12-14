@@ -8,11 +8,6 @@ metadata:
     app: http-server
 spec:
   replicas: 2
-  autoScaling:
-    horizontal:
-      maxReplicas: 10
-      averageCPU: 800m
-      averageRelativeMemory: 50
   selector:
     matchLabels:
       app: http-server
