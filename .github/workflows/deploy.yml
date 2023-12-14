@@ -78,6 +78,8 @@ jobs:
           kubectl get events
           echo "KUBECTL GET PODS"
           kubectl get pods -n default
+          echo "KUBECTL DESCRIBE PODS"
+          kubectl describe pods -n default
           echo "KUBECTL GET SERVICES"
           kubectl get services -n default
           echo "KUBECTL DESCRIBE SERVICE"
