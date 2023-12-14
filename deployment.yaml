@@ -22,11 +22,11 @@ spec:
           ports:
             - containerPort: 8080
           readinessProbe:
-            initialDelaySeconds: 10
+            initialDelaySeconds: 20
             periodSeconds: 3
             httpGet:
               path: /healthcheck
-              port: 8080
+              port: 80
 
 ---
 apiVersion: v1
