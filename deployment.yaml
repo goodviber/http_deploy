@@ -22,11 +22,11 @@ spec:
           ports:
             - containerPort: 8080
           readinessProbe:
-            httpGet:
-              host:
-              path: /healthcheck
-              port: 80
-            initialDelaySeconds: 60
+            exec:
+              command:
+                - curl
+                - $(minikube service http-server --url)
+            initialDelaySeconds: 20
             periodSeconds: 3
 ---
 apiVersion: v1
