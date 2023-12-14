@@ -20,6 +20,12 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.port }}
+          readinessProbe:
+            httpGet:
+              path: /healthcheck
+              port: {{ .Values.service.port }}
+              initialDelaySeconds: 10
+              periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /healthcheck
