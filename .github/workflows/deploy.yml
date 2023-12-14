@@ -65,8 +65,8 @@ jobs:
           docker images
 
       - name: Deploy to Minikube
-        run: helm install http-server ./helm
-        #run: kubectl apply -f deployment.yaml
+        #run: helm install http-server ./helm
+        run: kubectl apply -f deployment.yaml
 
       - name: Test services
         run: |
@@ -75,7 +75,7 @@ jobs:
           sleep 30
           minikube status
           kubectl get events
-          kubectl logs --all-containers
+          kubectl get pods
 
 #          until minikube service http-server --url; do
 #            echo "waiting for service to be ready"
