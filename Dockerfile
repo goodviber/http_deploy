@@ -1,6 +1,8 @@
 # Use an official Ruby runtime as a parent image
 FROM ruby:3.1-alpine
 
+RUN apt-get update && apt-get install -y curl
+
 # Set the working directory in the container
 WORKDIR /usr/src/app
 
