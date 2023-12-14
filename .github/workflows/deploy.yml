@@ -63,6 +63,7 @@ jobs:
 
       - name: Test services
         run: |
+          sleep 20
           minikube status
           echo "KUBECTL GET EVENTS"
           kubectl get events
@@ -79,8 +80,7 @@ jobs:
             echo "waiting for service to be ready"
             sleep 1
           done
-          
-          sleep 25
+
           echo "DESCRIBE SERVICE"
           kubectl describe service/http-server
           
