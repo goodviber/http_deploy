@@ -76,7 +76,9 @@ jobs:
           minikube status
           kubectl get events
           kubectl get pods
-          minikube logs
+          kubectl get services -n default
+          kubectl logs -n default service/http-server
+          kubectl describe service/http-server
           minikube service http-server --url
 #          until minikube service http-server --url; do
 #            echo "waiting for service to be ready"
