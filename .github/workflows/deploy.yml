@@ -78,9 +78,9 @@ jobs:
           kubectl get pods
           echo "KUBECTL GET SERVICES"
           kubectl get services -n default
-          echo "KUBECTL GET LOGS"
-          kubectl logs -n default service/http-server
+          echo "KUBECTL DESCRIBE SERVICE"
           kubectl describe service/http-server
+          echo "KUBECTL URL"
           minikube service http-server --url
         
 #          until minikube service http-server --url; do
