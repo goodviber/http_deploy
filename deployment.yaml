@@ -24,10 +24,9 @@ spec:
           readinessProbe:
             initialDelaySeconds: 10
             periodSeconds: 3
-            exec:
-              command:
-                - curl
-                - $(minikube service http-server --url)
+            httpGet:
+              path: /healthcheck
+              port: 8080
 
 ---
 apiVersion: v1
