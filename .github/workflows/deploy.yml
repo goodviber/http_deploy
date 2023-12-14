@@ -46,10 +46,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install kubectl
-        uses: azure/setup-kubectl@v1
-        with:
-          install-kubectl: true
+#      - name: Install kubectl
+#        uses: azure/setup-kubectl@v1
+#        with:
+#          install-kubectl: true
 
       - name: Start minikube
         uses: medyagh/setup-minikube@master
@@ -70,44 +70,13 @@ jobs:
 
       - name: Test services
         run: |
-          kubectl get pods
-          minikube service list
-          sleep 30
-          minikube status
-          echo "KUBECTL GET EVENTS"
-          kubectl get events
-          echo "KUBECTL GET PODS"
-          kubectl get pods -n default
-          echo "KUBECTL DESCRIBE PODS"
-          kubectl describe pods -n default
-          echo "KUBECTL GET SERVICES"
-          kubectl get services -n default
-          echo "KUBECTL DESCRIBE SERVICE"
-          kubectl describe service/http-server
-          echo "KUBECTL URL"
-          minikube service http-server --url
-        
           until minikube service http-server --url; do
             echo "waiting for service to be ready"
             sleep 1
           done
           if [ "$(curl $(minikube service http-server --url))" != "Well, hello there!" ] || [ "$(curl $(minikube service http-server --url)/healthcheck)" != "OK" ]; then
-            echo "Service not working as expected."
+            echo "Service not working"
             exit 1
           else
-            echo "Service is working as expected."
+            echo "Service is working"
           fi
-          kubectl config view
-
-#
-#- name: Set up Helm
-#  uses: azure/setup-helm@v2
-#     - name: Deploy to Kubernetes
-#       env:
-#         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-#       run: |
-#         echo "$KUBE_CONFIG_DATA" | base64 --decode > kubeconfig.yml
-#         kubectl config use-context your-cluster-name
-#         helm upgrade --install your-release-name ./path/to/helm/chart
-
-#
