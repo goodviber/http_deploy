@@ -22,7 +22,7 @@ spec:
             - containerPort: {{ .Values.service.port }}
           startupProbe:
             httpGet:
-              path: "/healthcheck"
+              path: /healthcheck
               port: {{ .Values.service.port }}
               failureThreshold: 30
               periodSeconds: 10
