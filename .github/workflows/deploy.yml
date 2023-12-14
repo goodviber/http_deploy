@@ -87,17 +87,17 @@ jobs:
           echo "KUBECTL URL"
           minikube service http-server --url
         
-#          until minikube service http-server --url; do
-#            echo "waiting for service to be ready"
-#            sleep 1
-#          done
-#          if [ "$(curl $(minikube service http-server --url))" != "Well, hello there!" ] || [ "$(curl $(minikube service http-server --url)/healthcheck)" != "OK" ]; then
-#            echo "Service not working as expected."
-#            exit 1
-#          else
-#            echo "Service is working as expected."
-#          fi
-#          kubectl config view
+          until minikube service http-server --url; do
+            echo "waiting for service to be ready"
+            sleep 1
+          done
+          if [ "$(curl $(minikube service http-server --url))" != "Well, hello there!" ] || [ "$(curl $(minikube service http-server --url)/healthcheck)" != "OK" ]; then
+            echo "Service not working as expected."
+            exit 1
+          else
+            echo "Service is working as expected."
+          fi
+          kubectl config view
 
 #
 #- name: Set up Helm
