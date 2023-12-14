@@ -8,6 +8,11 @@ metadata:
     app: http-server
 spec:
   replicas: 2
+  autoScalingGroups:
+    horizontal:
+      maxReplicas: 10
+      targetCPUUtilizationPercentage: 50
+      targetMemoryUtilizationPercentage: 50
   selector:
     matchLabels:
       app: http-server
