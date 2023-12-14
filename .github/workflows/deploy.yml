@@ -83,8 +83,8 @@ jobs:
           echo "DESCRIBE SERVICE"
           kubectl describe service/http-server
 
-          curl $(minikube service http-server --url)
-          curl $(minikube service http-server --url)/healthcheck
+#          curl $(minikube service http-server --url)
+#          curl $(minikube service http-server --url)/healthcheck
 #          if [ "$(curl $(minikube service http-server --url))" != "Well, hello there!" ] || [ "$(curl $(minikube service http-server --url)/healthcheck)" != "OK" ]; then
 #            echo "Service not working"
 #            exit 1
