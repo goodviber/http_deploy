@@ -23,13 +23,13 @@ spec:
           readinessProbe:
             httpGet:
               path: /healthcheck
-              port: {{ .Values.service.port }}
+              port: {{ .Values.service.nodePort }}
             initialDelaySeconds: 3
             periodSeconds: 3
           livenessProbe:
             httpGet:
               path: /healthcheck
-              port: {{ .Values.service.port }}
+              port: {{ .Values.service.nodePort }}
             initialDelaySeconds: 3
             periodSeconds: 5
           
