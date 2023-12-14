@@ -80,9 +80,6 @@ jobs:
             sleep 1
           done
 
-          echo "MINIKUBE LOGS"
-          minikube logs
-            
           echo "DESCRIBE SERVICE"
           kubectl describe service/http-server
 

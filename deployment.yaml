@@ -24,8 +24,8 @@ spec:
           readinessProbe:
             httpGet:
               path: /healthcheck
-              port: 80
-            initialDelaySeconds: 20
+              port: 8080
+            initialDelaySeconds: 60
             periodSeconds: 3
 ---
 apiVersion: v1
