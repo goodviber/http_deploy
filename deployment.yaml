@@ -27,6 +27,12 @@ spec:
             httpGet:
               path: /healthcheck
               port: 80
+          livenessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            httpGet:
+              path: /healthcheck
+              port: 80
 
 ---
 apiVersion: v1
