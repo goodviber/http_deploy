@@ -54,6 +54,7 @@ jobs:
       - name: Kubectl
         run: |
           minikube addons list
+          sleep 300
           kubectl top node
 
       - name: Build image
