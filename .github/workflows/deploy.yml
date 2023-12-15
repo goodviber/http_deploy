@@ -54,12 +54,9 @@ jobs:
       - name: Kubectl
         run: |
           minikube addons list
-          sleep 30
-          echo "KUBECTL GET DEPLOYMENT"
-          kubectl get deployment metrics-server -n kube-system
           sleep 180
           echo "KUBECTL TOP PODS"
-          kubectl top pods
+          kubectl top pods -n default
           echo "KUBECTL TOP NODES"
           kubectl top nodes
 
@@ -79,6 +76,12 @@ jobs:
         run: |
           sleep 20
           minikube status
+          minikube addons list
+          sleep 180
+          echo "KUBECTL TOP PODS"
+          kubectl top pods -n default
+          echo "KUBECTL TOP NODES"
+          kubectl top nodes
           echo "KUBECTL GET EVENTS"
           kubectl get events
           echo "KUBECTL GET PODS"
