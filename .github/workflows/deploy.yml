@@ -58,7 +58,9 @@ jobs:
           docker images
 
       - name: Deploy to Minikube
-        run: helm install http-server ./helm
+        run: |
+          minkube addons enable metrics-server
+          helm install http-server ./helm
         #run: kubectl apply -f deployment.yaml
 
       - name: Test services
