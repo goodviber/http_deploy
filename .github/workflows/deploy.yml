@@ -60,6 +60,7 @@ jobs:
       - name: Deploy to Minikube
         run: |
           minikube addons enable metrics-server
+          sleep 300
           helm install http-server ./helm
         #run: kubectl apply -f deployment.yaml
 
