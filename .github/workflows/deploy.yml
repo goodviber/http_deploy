@@ -55,8 +55,8 @@ jobs:
           kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
           sleep 120
           kubectl get deployment metrics-server -n default
-          kubectl get pods
-          kubectl top node
+          kubectl top pods
+          kubectl top nodes
 
       - name: Build image
         run: |
