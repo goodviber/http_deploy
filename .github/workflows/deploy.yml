@@ -58,6 +58,7 @@ jobs:
           sleep 30
           echo "KUBECTL GET DEPLOYMENT"
           kubectl get deployment metrics-server -n kube-system
+          sleep 180
           echo "KUBECTL TOP PODS"
           kubectl top pods
           echo "KUBECTL TOP NODES"
