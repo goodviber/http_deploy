@@ -54,7 +54,6 @@ jobs:
       - name: Kubectl
         run: |
           minikube addons list
-          kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
           sleep 30
           echo "KUBECTL GET DEPLOYMENT"
           kubectl get deployment metrics-server -n kube-system
