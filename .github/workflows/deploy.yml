@@ -48,8 +48,6 @@ jobs:
 
       - name: Start minikube
         uses: medyagh/setup-minikube@master
-        with:
-          addons: metrics-server
       
       - name: Kubectl
         run: |
@@ -74,25 +72,6 @@ jobs:
 
       - name: Test services
         run: |
-          sleep 20
-          minikube status
-          minikube addons list
-          sleep 300
-          echo "KUBECTL TOP PODS"
-          kubectl top pods -n default
-          echo "KUBECTL TOP NODES"
-          kubectl top nodes
-          echo "KUBECTL GET EVENTS"
-          kubectl get events
-          echo "KUBECTL GET PODS"
-          kubectl get pods -n default
-          echo "KUBECTL DESCRIBE PODS"
-          kubectl describe pods -n default
-          echo "KUBECTL GET SERVICES"
-          kubectl get services -n default
-          echo "KUBECTL DESCRIBE SERVICE"
-          kubectl describe service/http-server
-
           until minikube service http-server --url; do
             echo "waiting for service to be ready"
             sleep 1
