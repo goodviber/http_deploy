@@ -54,7 +54,7 @@ jobs:
           minikube addons list
           kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
           sleep 300
-          kubectl get deployment metrics-server -n default
+          kubectl get deployment metrics-server -n kube-system
           kubectl top pods
           kubectl top nodes
 
