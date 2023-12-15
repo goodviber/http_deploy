@@ -55,7 +55,7 @@ jobs:
         run: |
           minikube addons list
           sleep 300
-          kubeclt get pods
+          kubectl get pods
           kubectl top node
 
       - name: Build image
