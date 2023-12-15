@@ -50,14 +50,6 @@ jobs:
         uses: medyagh/setup-minikube@master
         with:
           addons: metrics-server
-      
-      - name: Kubectl
-        run: |
-          sleep 180
-          echo "KUBECTL TOP PODS"
-          kubectl top pods -n default
-          echo "KUBECTL TOP NODES"
-          kubectl top nodes
 
       - name: Build image
         run: |
@@ -77,7 +69,8 @@ jobs:
             echo "waiting for service to be ready"
             sleep 1
           done
-
+          echo "KUBECTL TOP NODES"
+          kubectl top nodes
           echo "DESCRIBE SERVICE"
           kubectl describe service/http-server
           
