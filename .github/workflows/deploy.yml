@@ -70,6 +70,9 @@ jobs:
             sleep 1
           done
 
+          echo "HELM TEST"
+          helm test http-server
+          
           sleep 120
           echo "KUBECTL TOP NODES"
           kubectl top nodes
