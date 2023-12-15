@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['$(minikube service {{ include "http-server.fullname" . }} --url)/healthcheck']
+      args: ['{{ include "http-server.fullname" . }}:{{ .Values.service.nodePort }}']
   restartPolicy: Never
