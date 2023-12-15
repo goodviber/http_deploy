@@ -69,6 +69,8 @@ jobs:
             echo "waiting for service to be ready"
             sleep 1
           done
+
+          sleep 120
           echo "KUBECTL TOP NODES"
           kubectl top nodes
           echo "DESCRIBE SERVICE"
