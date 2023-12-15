@@ -52,7 +52,9 @@ jobs:
           addons: metrics-server
       
       - name: Kubectl
-        run: minikube addons list
+        run: |
+          minikube addons list
+          kubectl top node
 
       - name: Build image
         run: |
