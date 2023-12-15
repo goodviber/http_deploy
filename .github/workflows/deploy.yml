@@ -48,13 +48,13 @@ jobs:
 
       - name: Start minikube
         uses: medyagh/setup-minikube@master
-        with:
-          addons: metrics-server
       
       - name: Kubectl
         run: |
           minikube addons list
-          sleep 300
+          kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+          sleep 120
+          kubectl get deployment metrics-server -n default
           kubectl get pods
           kubectl top node
 
