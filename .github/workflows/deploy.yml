@@ -48,6 +48,11 @@ jobs:
 
       - name: Start minikube
         uses: medyagh/setup-minikube@master
+        with:
+          addons: metrics-server
+      
+      - name: Kubectl
+        run: minikube addons list
 
       - name: Build image
         run: |
@@ -58,10 +63,7 @@ jobs:
           docker images
 
       - name: Deploy to Minikube
-        run: |
-          minikube addons enable metrics-server
-          sleep 300
-          helm install http-server ./helm
+        run: helm install http-server ./helm
         #run: kubectl apply -f deployment.yaml
 
       - name: Test services
