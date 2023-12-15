@@ -53,6 +53,7 @@ jobs:
       
       - name: Kubectl
         run: |
+          sleep 180
           echo "KUBECTL TOP PODS"
           kubectl top pods -n default
           echo "KUBECTL TOP NODES"
