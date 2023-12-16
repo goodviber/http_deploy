@@ -67,7 +67,6 @@ jobs:
 
       - name: Deploy to Minikube
         run: helm install http-server ./helm
-        #run: kubectl apply -f deployment.yaml
 
       - name: Test services
         run: |
@@ -81,12 +80,3 @@ jobs:
           kubectl top nodes
           echo "DESCRIBE SERVICE"
           kubectl describe service/http-server
-          
-#          curl $(minikube service http-server --url)
-#          curl $(minikube service http-server --url)/healthcheck
-#          if [ "$(curl $(minikube service http-server --url))" != "Well, hello there!" ] || [ "$(curl $(minikube service http-server --url)/healthcheck)" != "OK" ]; then
-#            echo "Service not working"
-#            exit 1
-#          else
-#            echo "Service is working"
-#          fi
