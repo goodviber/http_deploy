@@ -12,3 +12,8 @@ Github actions workflow
 1. Build image and push to dockerhub
 2. Pull image and deploy via helm
 
+Autoscaling enabled
+Liveness and Readiness probes
+Default behaviour on deployment is creation of new replicaset and deletion of old when ready - avoids downtime
+Nodeport exposes on 80
+
