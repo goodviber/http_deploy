@@ -4,7 +4,7 @@ Serves on port 80.
 /healthcheck path returns "OK"   
 All other paths return "Well, hello there!"  
 
-`$ ruby webserver.rb`
+`$ ruby http_server.rb`
 
 # Helm deployment to minikube
 Local kubernetes on minikube
